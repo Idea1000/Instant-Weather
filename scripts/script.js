@@ -1,3 +1,7 @@
+/**
+ * retire toutes les options d'un select
+ * @param {document.select} selectElement 
+ */
 function removeOptions(selectElement) {
     let i, L = selectElement.options.length - 1;
     for(i = L; i >= 0; i--) {
@@ -5,17 +9,23 @@ function removeOptions(selectElement) {
     }
  }
  
-
+/**
+ * met à jour la liste des communes
+ */
 function update() {
     postal = document.getElementById("code").value.toString();
     if (postal.length == 5 && postal != lastPostal) {
-        getCommunes(postal);
+        getCommunes(postal, document.getElementById("comm")); //modifier ici l'id du select
         lastPostal = postal;
     }
 }
 
-function getCommunes(postal) {
-    select = document.getElementById("comm");
+/**
+ * insere les communes listé avec le code postal donné dans le select donné
+ * @param {String} postal 
+ * @param {document.select} select
+ */
+function getCommunes(postal, select) {
     fetch(`https://geo.api.gouv.fr/communes?codePostal=${postal}&fields=nom,code,codePostal`)
     .then(response => {
         if (!response.ok) {
@@ -32,7 +42,6 @@ function getCommunes(postal) {
             opt.value = commune.code;
             opt.innerHTML = commune.nom;
             select.appendChild(opt);
-            
         });
         select.hidden = false;
     }).catch(error => {
@@ -42,4 +51,4 @@ function getCommunes(postal) {
 
 document.getElementById("code").addEventListener("keyup", update);
 const gouvURL = 'https://geo.api.gouv.fr/communes';
-let lastPostal = "0";
+let lastPostal = "0"; //sécurité anti spam de requêtes
