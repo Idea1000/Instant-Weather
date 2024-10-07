@@ -44,11 +44,30 @@ function getCommunes(postal, select) {
             select.appendChild(opt);
         });
         select.hidden = false;
+        document.getElementById("obtenirMeteo").hidden = false;
+    }).catch(error => {
+        console.error("Une erreur s'est produite :", error);
+    });
+}
+
+function getMeteo(insee) {
+    fetch(`https://api.meteo-concept.com/api/forecast/daily/0?token=${APITOKEN}&insee=${insee}`)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Erreur lors de la récupération des données");
+        }
+        return response.json(); // Convertit la réponse en JSON
+    }).then(data => {
+        console.log(data['forecast']);
+        console.log("temperature max = " + data['forecast'].tmax);
     }).catch(error => {
         console.error("Une erreur s'est produite :", error);
     });
 }
 
 document.getElementById("code").addEventListener("keyup", update);
-const gouvURL = 'https://geo.api.gouv.fr/communes';
+document.getElementById("obtenirMeteo").addEventListener("click", () => {
+    getMeteo(document.getElementById("comm").value);
+})
+const APITOKEN = '7e4130a5c51e4c071da97d29828bea60cf0091b53ca00d105a0b79bd54bd803d';
 let lastPostal = "0"; //sécurité anti spam de requêtes
