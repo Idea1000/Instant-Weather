@@ -1,6 +1,6 @@
 # Instant Weather
 
-:memo: Lien du projet : https://github.com/Idea1000/Instant-Weather
+:memo: Lien du projet : https://idea1000.github.io/Instant-Weather/
 
 ## Présentation de l'application
 
