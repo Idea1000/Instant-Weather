@@ -24,16 +24,18 @@
                 <div class="codePost">
                     <form id="codeP">
                         <label>Saisissez votre code postal</label>
-                        <input type="text" id="cp" placeholder="Code postal">
-                        <select id="selectCommune">
-
+                        <input type="text" id="cp" placeholder="Code postal" value="">
+                        <select id="selectCommune" hidden>
                         </select>
                     </form>
-                    <button id="valider">Valider</button>
+                    <button id="valider" hidden>Valider</button>
                 </div>
-                <div class="infosMeteo">
-                    
-                </div>
+            </div>
+            <div class="containerMeteo" id="result" hidden>
+                <p id="Tmin"></p>
+                <p id="Tmax"></p>
+                <p id="Ppluie"></p>
+                <p id="Ejour"></p>
             </div>
         </main>
         <footer>

@@ -13,9 +13,9 @@ function removeOptions(selectElement) {
  * met à jour la liste des communes
  */
 function update() {
-    postal = document.getElementById("code").value.toString();
+    postal = document.getElementById("cp").value.toString();
     if (postal.length == 5 && postal != lastPostal) {
-        getCommunes(postal, document.getElementById("comm")); //modifier ici l'id du select
+        getCommunes(postal, document.getElementById("selectCommune")); //modifier ici l'id du select
         lastPostal = postal;
     }
 }
@@ -44,30 +44,48 @@ function getCommunes(postal, select) {
             select.appendChild(opt);
         });
         select.hidden = false;
-        document.getElementById("obtenirMeteo").hidden = false;
+        document.getElementById("valider").hidden = false;
     }).catch(error => {
         console.error("Une erreur s'est produite :", error);
     });
 }
 
+/**
+ * recupere les données météo pour ce code INSEE
+ * @param {*} insee 
+ */
 function getMeteo(insee) {
-    fetch(`https://api.meteo-concept.com/api/forecast/daily/0?token=${APITOKEN}&insee=${insee}`)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error("Erreur lors de la récupération des données");
-        }
-        return response.json(); // Convertit la réponse en JSON
-    }).then(data => {
-        console.log(data['forecast']);
-        console.log("temperature max = " + data['forecast'].tmax);
-    }).catch(error => {
-        console.error("Une erreur s'est produite :", error);
-    });
+    if (insee != lastInsee) {
+        fetch(`https://api.meteo-concept.com/api/forecast/daily/0?token=${APITOKEN}&insee=${insee}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erreur lors de la récupération des données");
+            }
+            return response.json(); // Convertit la réponse en JSON
+        }).then(data => {
+            console.log(data['forecast']);
+            //console.log("temperature max = " + data['forecast'].tmax);
+            document.createElement("div")
+            document.getElementById("result").hidden = false;
+            document.getElementById("Tmin").textContent = `Température minimale ${data['forecast'].tmin}°C`;
+            document.getElementById("Tmax").textContent = `Température maximale ${data['forecast'].tmax}°C`;
+            document.getElementById("Ppluie").textContent = `Probabilité de pluie ${data['forecast'].probarain}%`;
+            document.getElementById("Ejour").textContent = `Ensoleillement du jour ${data['forecast'].sun_hours}h`;
+        }).catch(error => {
+            console.error("Une erreur s'est produite :", error);
+        });
+        lastInsee = insee;
+    }
 }
 
-document.getElementById("code").addEventListener("keyup", update);
-document.getElementById("obtenirMeteo").addEventListener("click", () => {
-    getMeteo(document.getElementById("comm").value);
+document.getElementById("cp").addEventListener("keyup", update);
+document.getElementById("valider").addEventListener("click", () => {
+    getMeteo(document.getElementById("selectCommune").value);
 })
 const APITOKEN = '7e4130a5c51e4c071da97d29828bea60cf0091b53ca00d105a0b79bd54bd803d';
 let lastPostal = "0"; //sécurité anti spam de requêtes
+let lastInsee = "0";
+
+document.addEventListener("DOMContentLoaded", function(){
+    document.getElementById("cp").value = "";
+});

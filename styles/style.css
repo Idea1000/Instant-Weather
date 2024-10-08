@@ -90,6 +90,17 @@ p, label {
     background: rgba(160,160,160,1);
 }
 
+.containerMeteo{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    width: 60vw !important;
+    padding: 0.4vw;
+    border-radius: 10px;
+    margin: 3vw auto;
+    background-color: lightgrey !important;
+    background: rgba(160,160,160,1);
+}
 
 footer {
     width: 100%;
