@@ -44,6 +44,7 @@ function getCommunes(postal, select) {
             select.appendChild(opt);
         });
         select.hidden = false;
+        document.getElementById("labelSelect").hidden = false;
         document.getElementById("valider").hidden = false;
     }).catch(error => {
         console.error("Une erreur s'est produite :", error);
@@ -71,10 +72,31 @@ function getMeteo(insee) {
             document.getElementById("Tmax").textContent = `Température maximale ${data['forecast'].tmax}°C`;
             document.getElementById("Ppluie").textContent = `Probabilité de pluie ${data['forecast'].probarain}%`;
             document.getElementById("Ejour").textContent = `Ensoleillement du jour ${data['forecast'].sun_hours}h`;
+            updateIcon(data['forecast'].weather);
         }).catch(error => {
             console.error("Une erreur s'est produite :", error);
         });
         lastInsee = insee;
+    }
+}
+
+function updateIcon(weather){
+    if(weather <4){
+        document.getElementById("Emoji").innerHTML =`<em class="fa-sun fa-solid">`;
+    }else if(weather <6){
+        document.getElementById("Emoji").innerHTML = `<em class="fa-cloud-sun fa-solid">`;
+    }else if(weather <10){
+        document.getElementById("Emoji").innerHTML = `<em class="fa-cloud fa-solid">`;
+    }else if(weather <12 || weather == 16){
+        document.getElementById("Emoji").innerHTML = `<em class="fa-cloud-rain fa-solid">`;
+    }else if((weather >16 && weather <22) || (weather > 39 && weather <79)){
+        document.getElementById("Emoji").innerHTML = `<em class="fa-cloud-showers-heavy fa-solid">`;
+    }else if(weather >99 && weather <143){
+        document.getElementById("Emoji").innerHTML = `<em class="fa-cloud-bolt fa-solid">`;
+    }else if(weather <212){
+        document.getElementById("Emoji").innerHTML = `<em class="fa-cloud-sun-rain fa-solid">`;
+    }else {
+        document.getElementById("Emoji").innerHTML = `<em class="fa-snowflake fa-solid">`;
     }
 }
 
