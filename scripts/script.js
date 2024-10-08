@@ -44,6 +44,7 @@ function getCommunes(postal, select) {
             select.appendChild(opt);
         });
         select.hidden = false;
+        document.getElementById("labelSelect").hidden = false;
         document.getElementById("valider").hidden = false;
     }).catch(error => {
         console.error("Une erreur s'est produite :", error);

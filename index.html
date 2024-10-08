@@ -23,11 +23,13 @@
             <div class="container">
                 <div class="codePost">
                     <form id="codeP">
-                        <label>Saisissez votre code postal</label>
-                        <input type="text" id="cp" placeholder="Code postal" value="">
+                        <label for="cp">Saisissez votre code postal&nbsp;</label>
+                        <input type="text" id="cp" placeholder="Code postal">
+                        <label id="labelSelect" for="selectCommune" hidden>Choisissez votre commune&nbsp;</label>
                         <select id="selectCommune" hidden>
                         </select>
                     </form>
+                    <br>
                     <button id="valider" hidden>Valider</button>
                 </div>
             </div>
