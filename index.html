@@ -3,36 +3,67 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles/style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-        <link href="styles/bootstrap.css" rel="stylesheet">
+        <link href="styles/bulma.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="styles/style.css">
         <title>Instant Weather</title>
     </head>
     <body>
         <header>
-            <div class="titre">
-                <h1>Instant Weather</h1>
-            </div>
-            <div class="sousTitre">
-                <p>Votre météo en un clic</p>
-            </div>
+            <section class="hero">
+                <div class="hero-body">
+                    <p class="title">Instant Weather</p>
+                    <p class="subtitle">Votre météo en un clic</p>
+                </div>
+            </section>
         </header>
         <main>
-            <div class="container">
-                <div class="codePost">
-                    <form id="codeP">
-                        <label for="cp">Saisissez votre code postal&nbsp;</label>
-                        <input type="text" id="cp" placeholder="Code postal">
-                        <label id="labelSelect" for="selectCommune" hidden>Choisissez votre commune&nbsp;</label>
-                        <select id="selectCommune" hidden>
-                        </select>
-                    </form>
-                    <br>
-                    <button id="valider" hidden>Valider</button>
-                </div>
+            <div class="box m-6">
+                <form class="field" id="codeP">
+                    <label class="label" for="cp">Saisissez votre code postal</label>
+                    <div class="control has-icons-left">
+                        <input class="input is-large is-rounded" type="text" id="cp" placeholder="Code postal">
+                        <span class="icon is-small is-left">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </span>
+                    </div>
+                    <label class="label is-hidden" id="labelSelect" for="selectCommune">Choisissez votre commune</label>
+                    <div class="field has-addons">
+                        <div class="control">
+                            <div class="select is-rounded is-hidden" id="selectCommuneDiv">
+                                <select id="selectCommune"></select>
+                            </div>
+                        </div>
+                        <div class="control">
+                            <button class="button is-primary is-hidden" id="valider" type="button">
+                                <span>
+                                    Valider
+                                </span>
+                                <span class="icon is-small">
+                                    <i class="fa-solid fa-play"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
+
+            <div class="box m-6 is-hidden" id="result">
+                <div class="tabs">
+                    <ul>
+                        <li class="is-active"><a>Aujourd'hui</a></li>
+                    </ul>
+                </div>
+                <p id="Emoji">test</p>
+                <p id="Tmin">test</p>
+                <p id="Tmax">test</p>
+                <p id="Ppluie">test</p>
+                <p id="Ejour">test</p>
+            </div>
+            
+            <!--
             <div class="containerMeteo" id="result" hidden>
                 <p id="Emoji"></p>
                 <p id="Tmin"></p>
@@ -40,12 +71,14 @@
                 <p id="Ppluie"></p>
                 <p id="Ejour"></p>
             </div>
+            -->
         </main>
-        <footer>
-            <p>&copy; Cyclone³</p>
+        <footer class="footer has-text-centered">
+            <p>
+                <a href="https://github.com/Idea1000/Instant-Weather" class="has-text-grey-light">&copy; Cyclone³</a>
+            </p>
         </footer>
         <script defer src="https://kit.fontawesome.com/d0caf46f42.js" crossorigin="anonymous"></script>
-        <script defer src="scripts/bootstrap.bundle.js"></script>
         <script src="scripts/script.js"></script>
     </body>
 </html>

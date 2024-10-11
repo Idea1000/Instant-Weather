@@ -43,9 +43,10 @@ function getCommunes(postal, select) {
             opt.innerHTML = commune.nom;
             select.appendChild(opt);
         });
-        select.hidden = false;
-        document.getElementById("labelSelect").hidden = false;
-        document.getElementById("valider").hidden = false;
+        document.getElementById("selectCommuneDiv").classList.remove("is-hidden");
+        document.getElementById("selectCommuneDiv").style.transition = "all 2s";
+        document.getElementById("labelSelect").classList.remove("is-hidden");
+        document.getElementById("valider").classList.remove("is-hidden");
     }).catch(error => {
         console.error("Une erreur s'est produite :", error);
     });
@@ -57,27 +58,34 @@ function getCommunes(postal, select) {
  */
 function getMeteo(insee) {
     if (insee != lastInsee) {
-        fetch(`https://api.meteo-concept.com/api/forecast/daily/0?token=${APITOKEN}&insee=${insee}`)
+        console.log(`https://api.meteo-concept.com/api/forecast/daily?token=${APITOKEN}&insee=${insee}`);
+        fetch(`https://api.meteo-concept.com/api/forecast/daily?token=${APITOKEN}&insee=${insee}`)
         .then(response => {
+            console.log("Response headers: ", response.headers);
             if (!response.ok) {
                 throw new Error("Erreur lors de la récupération des données");
             }
             return response.json(); // Convertit la réponse en JSON
         }).then(data => {
             console.log(data['forecast']);
-            //console.log("temperature max = " + data['forecast'].tmax);
+            meteo = data['forecast'];
             document.createElement("div")
-            document.getElementById("result").hidden = false;
-            document.getElementById("Tmin").textContent = `Température minimale ${data['forecast'].tmin}°C`;
-            document.getElementById("Tmax").textContent = `Température maximale ${data['forecast'].tmax}°C`;
-            document.getElementById("Ppluie").textContent = `Probabilité de pluie ${data['forecast'].probarain}%`;
-            document.getElementById("Ejour").textContent = `Ensoleillement du jour ${data['forecast'].sun_hours}h`;
-            updateIcon(data['forecast'].weather);
+            document.getElementById("result").classList.remove("is-hidden");
+            updateMeteo(0);
         }).catch(error => {
             console.error("Une erreur s'est produite :", error);
+            console.log(`https://api.meteo-concept.com/api/forecast/daily?token=${APITOKEN}&insee=${insee}`);
         });
         lastInsee = insee;
     }
+}
+
+function updateMeteo(jour) {
+    document.getElementById("Tmin").textContent = `Température minimale ${meteo[0].tmin}°C`;
+    document.getElementById("Tmax").textContent = `Température maximale ${meteo[0].tmax}°C`;
+    document.getElementById("Ppluie").textContent = `Probabilité de pluie ${meteo[0].probarain}%`;
+    document.getElementById("Ejour").textContent = `Ensoleillement du jour ${meteo[0].sun_hours}h`;
+    updateIcon(meteo[0].weather);
 }
 
 function updateIcon(weather){
@@ -111,3 +119,5 @@ let lastInsee = "0";
 document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("cp").value = "";
 });
+
+let meteo;
