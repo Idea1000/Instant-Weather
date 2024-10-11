@@ -4,47 +4,20 @@
     box-sizing: border-box !important;
 }
 
+/*
 body {
-    /*background-image: url("../images/ciel.jpeg");*/
+    background-image: url("../images/ciel.jpeg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
-}
+}*/
 
-h1, p, label {
+p, label {
     font-family: "Exo 2", sans-serif !important;
-}
-
-h1 {
-    font-size: 3vw !important;
 }
 
 p, label {
     font-size: 1vw !important;
-}
-
-.container{
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-    width: 25vw !important;
-    padding: 0.4vw;
-    border-radius: 10px;
-    margin: 3vw auto;
-    background-color: darkgrey !important;
-    background: rgba(160,160,160,1);
-}
-
-.containerMeteo{
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-    width: 60vw !important;
-    padding: 0.4vw;
-    border-radius: 10px;
-    margin: 3vw auto;
-    background-color: darkgrey !important;
-    background: rgba(160,160,160,1);
 }
 
 footer {
