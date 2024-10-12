@@ -23,7 +23,7 @@ p, label {
 footer {
     width: 100%;
     position: fixed;
-    top: calc( 100vh - 100px )
+    top: calc( 100vh - 80px )
 }
 
 .fixed-top {

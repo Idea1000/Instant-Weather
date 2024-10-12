@@ -103,7 +103,7 @@ function getCommunes(postal, select) {
  */
 function getMeteo(insee) {
     if (insee != lastInsee) {
-        console.log(`https://api.meteo-concept.com/api/forecast/daily?token=${APITOKEN}&insee=${insee}`);
+        document.getElementById("valider").classList.add("is-loading");
         fetch(`https://api.meteo-concept.com/api/forecast/daily?token=${APITOKEN}&insee=${insee}`)
         .then(response => {
             console.log("Response headers: ", response.headers);
@@ -119,9 +119,9 @@ function getMeteo(insee) {
             updateMeteo(0);
         }).catch(error => {
             console.error("Une erreur s'est produite :", error);
-            console.log(`https://api.meteo-concept.com/api/forecast/daily?token=${APITOKEN}&insee=${insee}`);
         });
         lastInsee = insee;
+        document.getElementById("valider").classList.remove("is-loading");
     }
 }
 

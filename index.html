@@ -5,10 +5,7 @@
         <meta name="description" content="Site de météo">
         <meta name="keywords" content="meteo, météo">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--<link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">-->
-        <link rel="stylesheet" href="styles/bulma.min.css"> <!-- https://uncss-online.com/ -->
+        <link rel="stylesheet" href="styles/bulma.opti.css"> <!-- https://uncss-online.com/ -->
         <link rel="stylesheet" href="styles/style.css">
         <title>Instant Weather</title>
     </head>
@@ -28,31 +25,31 @@
                         <li class="is-active"><a href="#">Aujourd'hui</a></li>
                     </ul>
                 </div>
-                <p id="Emoji" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
+                <p id="Emoji" class="is-size-3-desktop is-size-4-tablet is-size-5-mobile"></p>
                 <p id="Tmin" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
                 <p id="Tmax" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
                 <p id="Ppluie" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
                 <p id="Ejour" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
             </div>
 
-            <div class="box m-6">
+            <div class="box m-6 mb-7">
                 <form class="field" id="codeP">
                     <label class="label is-size-4-desktop is-size-5-tablet is-size-6-mobile" for="cp">Saisissez votre code postal</label>
                     <div class="control has-icons-left">
-                        <input class="input is-large is-rounded" type="text" id="cp" placeholder="Code postal" value="">
+                        <input class="input is-medium is-rounded" type="text" id="cp" placeholder="Code postal" value="">
                         <span class="icon is-small is-left">
                             <i class="fa-solid fa-location-dot"></i>
                         </span>
                     </div>
-                    <label class="label is-hidden is-size-4-desktop is-size-5-tablet is-size-6-mobile" id="labelSelect" for="selectCommune">Choisissez votre commune</label>
-                    <div class="field has-addons">
-                        <div class="control">
-                            <div class="select is-rounded is-hidden" id="selectCommuneDiv">
+                    <label class="label is-hidden is-size-4-desktop is-size-5-tablet is-size-6-mobile mt-5" id="labelSelect" for="selectCommune">Choisissez votre commune</label>
+                    <div class="columns">
+                        <div class="control column">
+                            <div class="select is-medium is-rounded is-hidden" id="selectCommuneDiv">
                                 <select id="selectCommune"></select>
                             </div>
                         </div>
-                        <div class="control">
-                            <button class="button is-primary is-hidden" id="valider" type="button">
+                        <div class="control column has-text-right-desktop">
+                            <button class="button is-primary is-hidden is-medium is-rounded" id="valider" type="button">
                                 <span>
                                     Valider
                                 </span>
@@ -65,7 +62,7 @@
                 </form>
             </div>
         </main>
-
+        <br><br>
         <footer class="footer has-text-centered pb-6 pt-5">
             <p>
                 <strong><a href="https://github.com/Idea1000/Instant-Weather" class="has-text-text is-size-4 is-size-5-mobile">&copy; Cyclone³</a></strong>
