@@ -81,11 +81,11 @@ function getMeteo(insee) {
 }
 
 function updateMeteo(jour) {
-    document.getElementById("Tmin").textContent = `Température minimale ${meteo[0].tmin}°C`;
-    document.getElementById("Tmax").textContent = `Température maximale ${meteo[0].tmax}°C`;
-    document.getElementById("Ppluie").textContent = `Probabilité de pluie ${meteo[0].probarain}%`;
-    document.getElementById("Ejour").textContent = `Ensoleillement du jour ${meteo[0].sun_hours}h`;
-    updateIcon(meteo[0].weather);
+    document.getElementById("Tmin").textContent = `Température minimale ${meteo[jour].tmin}°C`;
+    document.getElementById("Tmax").textContent = `Température maximale ${meteo[jour].tmax}°C`;
+    document.getElementById("Ppluie").textContent = `Probabilité de pluie ${meteo[jour].probarain}%`;
+    document.getElementById("Ejour").textContent = `Ensoleillement du jour ${meteo[jour].sun_hours}h`;
+    updateIcon(meteo[jour].weather);
 }
 
 function updateIcon(weather){

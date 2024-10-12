@@ -8,7 +8,7 @@
         <!--<link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">-->
-        <link href="styles/bulma.opti.css" rel="stylesheet"> <!-- https://uncss-online.com/ -->
+        <link href="styles/bulma.min.css" rel="stylesheet"> <!-- https://uncss-online.com/ -->
         <link rel="stylesheet" href="styles/style.css">
         <title>Instant Weather</title>
     </head>
@@ -16,22 +16,35 @@
         <header>
             <section class="hero">
                 <div class="hero-body">
-                    <p class="title">Instant Weather</p>
-                    <p class="subtitle">Votre météo en un clic</p>
+                    <p class="title is-size-1-desktop is-size-2-tablet is-size-3-mobile">Instant Weather</p>
+                    <p class="subtitle is-size-3-desktop is-size-4-tablet is-size-5-mobile">Votre météo en un clic</p>
                 </div>
             </section>
         </header>
         <main>
+            <div class="box m-6 is-hidden" id="result">
+                <div class="tabs">
+                    <ul>
+                        <li class="is-active"><a>Aujourd'hui</a></li>
+                    </ul>
+                </div>
+                <p id="Emoji" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
+                <p id="Tmin" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
+                <p id="Tmax" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
+                <p id="Ppluie" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
+                <p id="Ejour" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
+            </div>
+
             <div class="box m-6">
                 <form class="field" id="codeP">
-                    <label class="label" for="cp">Saisissez votre code postal</label>
+                    <label class="label is-size-4-desktop is-size-5-tablet is-size-6-mobile" for="cp">Saisissez votre code postal</label>
                     <div class="control has-icons-left">
                         <input class="input is-large is-rounded" type="text" id="cp" placeholder="Code postal">
                         <span class="icon is-small is-left">
                             <i class="fa-solid fa-location-dot"></i>
                         </span>
                     </div>
-                    <label class="label is-hidden" id="labelSelect" for="selectCommune">Choisissez votre commune</label>
+                    <label class="label is-hidden is-size-4-desktop is-size-5-tablet is-size-6-mobile" id="labelSelect" for="selectCommune">Choisissez votre commune</label>
                     <div class="field has-addons">
                         <div class="control">
                             <div class="select is-rounded is-hidden" id="selectCommuneDiv">
@@ -51,19 +64,6 @@
                     </div>
                 </form>
             </div>
-
-            <div class="box m-6 is-hidden" id="result">
-                <div class="tabs">
-                    <ul>
-                        <li class="is-active"><a>Aujourd'hui</a></li>
-                    </ul>
-                </div>
-                <p id="Emoji">test</p>
-                <p id="Tmin">test</p>
-                <p id="Tmax">test</p>
-                <p id="Ppluie">test</p>
-                <p id="Ejour">test</p>
-            </div>
             
             <!--
             <div class="containerMeteo" id="result" hidden>
@@ -75,9 +75,9 @@
             </div>
             -->
         </main>
-        <footer class="footer has-text-centered">
+        <footer class="footer has-text-centered pb-6 pt-5">
             <p>
-                <a href="https://github.com/Idea1000/Instant-Weather" class="has-text-grey-light">&copy; Cyclone³</a>
+                <a href="https://github.com/Idea1000/Instant-Weather" class="has-text-grey-lighter is-size-4-desktop is-size-5-tablet is-size-6-mobile">&copy; Cyclone³</a>
             </p>
         </footer>
         <script defer src="https://kit.fontawesome.com/d0caf46f42.js" crossorigin="anonymous"></script>

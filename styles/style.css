@@ -22,6 +22,6 @@ p, label {
 
 footer {
     width: 100%;
-    position: absolute;
-    bottom: 0;
+    position: fixed;
+    top: calc( 100vh - 100px )
 }
