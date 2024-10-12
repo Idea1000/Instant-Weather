@@ -25,3 +25,9 @@ footer {
     position: fixed;
     top: calc( 100vh - 100px )
 }
+
+.fixed-top {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+}
