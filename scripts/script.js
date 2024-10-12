@@ -65,7 +65,7 @@ function createNotification(texte) {
 function getCommunes(postal, select) {
     if (isNaN(postal)) {
         //si le code postal donnée contient un caractère qui n'est pas un nombre
-        createNotification(`le code postal "<strong>${postal}</strong>" n'est pas valide`);
+        createNotification(`le code postal <strong>"${postal}"</strong> n'est pas valide`);
     } else {
         fetch(`https://geo.api.gouv.fr/communes?codePostal=${postal}&fields=nom,code,codePostal`)
         .then(response => {
