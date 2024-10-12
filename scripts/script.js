@@ -108,6 +108,10 @@ function updateIcon(weather){
     }
 }
 
+document.addEventListener("DOMContentLoaded", function(){
+    document.getElementById("cp").value = "";
+});
+
 document.getElementById("cp").addEventListener("keyup", update);
 document.getElementById("valider").addEventListener("click", () => {
     getMeteo(document.getElementById("selectCommune").value);
@@ -115,9 +119,4 @@ document.getElementById("valider").addEventListener("click", () => {
 const APITOKEN = '7e4130a5c51e4c071da97d29828bea60cf0091b53ca00d105a0b79bd54bd803d';
 let lastPostal = "0"; //sécurité anti spam de requêtes
 let lastInsee = "0";
-
-document.addEventListener("DOMContentLoaded", function(){
-    document.getElementById("cp").value = "";
-});
-
 let meteo;
