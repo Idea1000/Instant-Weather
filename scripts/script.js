@@ -1,3 +1,54 @@
+//local storage setting
+if (localStorage.getItem('cyclone_weather_lat') == null) {
+    localStorage.setItem('cyclone_weather_lat',  JSON.stringify(false));
+}
+if (localStorage.getItem('cyclone_weather_lon') == null) {
+    localStorage.setItem('cyclone_weather_lon',  JSON.stringify(false));
+}
+if (localStorage.getItem('cyclone_weather_cumul') == null) {
+    localStorage.setItem('cyclone_weather_cumul',  JSON.stringify(false));
+}
+if (localStorage.getItem('cyclone_weather_vent') == null) {
+    localStorage.setItem('cyclone_weather_vent',  JSON.stringify(false));
+}
+if (localStorage.getItem('cyclone_weather_dirvent') == null) {
+    localStorage.setItem('cyclone_weather_dirvent',  JSON.stringify(false));
+}
+if (localStorage.getItem('cyclone_weather_day') == null) {
+    localStorage.setItem('cyclone_weather_day',  1);
+}
+
+let latitude = JSON.parse(localStorage.getItem('cyclone_weather_lat'));
+let longitude = JSON.parse(localStorage.getItem('cyclone_weather_lon'));
+let cumul = JSON.parse(localStorage.getItem('cyclone_weather_cumul'));
+let vent = JSON.parse(localStorage.getItem('cyclone_weather_vent'));
+let direction = JSON.parse(localStorage.getItem('cyclone_weather_dirvent'));
+let dayRequested = JSON.parse(localStorage.getItem('cyclone_weather_day'));
+
+document.getElementById("latAvis").checked = latitude;
+document.getElementById("longAvis").checked = longitude;
+document.getElementById("cumulAvis").checked = cumul;
+document.getElementById("ventAvis").checked = vent;
+document.getElementById("directionAvis").checked = direction;
+document.getElementById("jourSouhait").value = dayRequested;
+
+//fin local storage setting
+
+function updateSetting() {
+    localStorage.setItem('cyclone_weather_lat',  JSON.stringify(document.getElementById("latAvis").checked));
+    localStorage.setItem('cyclone_weather_lon',  JSON.stringify(document.getElementById("longAvis").checked));
+    localStorage.setItem('cyclone_weather_cumul',  JSON.stringify(document.getElementById("cumulAvis").checked));
+    localStorage.setItem('cyclone_weather_vent',  JSON.stringify(document.getElementById("ventAvis").checked));
+    localStorage.setItem('cyclone_weather_dirvent',  JSON.stringify(document.getElementById("directionAvis").checked));
+    localStorage.setItem('cyclone_weather_day',  document.getElementById("jourSouhait").value);
+    latitude = localStorage.getItem('cyclone_weather_lat');
+    longitude = localStorage.getItem('cyclone_weather_lon');
+    cumul = localStorage.getItem('cyclone_weather_cumul');
+    vent = localStorage.getItem('cyclone_weather_vent');
+    direction = localStorage.getItem('cyclone_weather_dirvent');
+    dayRequested = localStorage.getItem('cyclone_weather_day');
+}
+
 /**
  * retire toutes les options d'un select
  * @param {document.select} selectElement 
@@ -135,7 +186,7 @@ function updateMeteo(jour) {
     document.getElementById("Tmax").textContent = `Température maximale ${meteo[jour].tmax}°C`;
     document.getElementById("Ppluie").textContent = `Probabilité de pluie ${meteo[jour].probarain}%`;
     document.getElementById("Ejour").textContent = `Ensoleillement du jour ${meteo[jour].sun_hours}h`;
-    
+
     document.getElementById("option").classList.add("is-hidden");
     document.getElementById("latitude").classList.add("is-hidden");
     document.getElementById("longitude").classList.add("is-hidden");
@@ -218,12 +269,6 @@ let lastPostal = "0"; //sécurité anti spam de requêtes
 let lastInsee = "0"; //sécurité anti spam de requêtes
 let meteo; //sauvegarde des informations de météo
 let notification;
-let latitude = false;
-let longitude = false;
-let cumul = false;
-let vent = false;
-let direction = false;
-let dayRequested = 1;
 
 //setting
 let settingOpen = false;
@@ -237,18 +282,7 @@ document.getElementById("settingIcon").addEventListener("click", () => {
     }
 });
 document.getElementById("applySetting").addEventListener("click", () => {
-    latitude = document.getElementById("latAvis").checked;
-    longitude = document.getElementById("longAvis").checked;
-    cumul = document.getElementById("cumulAvis").checked;
-    vent = document.getElementById("ventAvis").checked;
-    direction = document.getElementById("directionAvis").checked;
-    dayRequested = document.getElementById("jourSouhait").value;
-    console.log(latitude);
-    console.log(longitude);
-    console.log(cumul);
-    console.log(vent);
-    console.log(direction);
-    console.log(dayRequested);
+    updateSetting();
 
     //fermer setting
     document.getElementById("settingPage").classList.add("is-hidden");
