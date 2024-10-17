@@ -130,11 +130,45 @@ function getMeteo(insee) {
  * @param {int} jour le nombre de jour depuis aujourd'hui
  */
 function updateMeteo(jour) {
+    updateIcon(meteo[jour].weather);
     document.getElementById("Tmin").textContent = `Température minimale ${meteo[jour].tmin}°C`;
     document.getElementById("Tmax").textContent = `Température maximale ${meteo[jour].tmax}°C`;
     document.getElementById("Ppluie").textContent = `Probabilité de pluie ${meteo[jour].probarain}%`;
     document.getElementById("Ejour").textContent = `Ensoleillement du jour ${meteo[jour].sun_hours}h`;
-    updateIcon(meteo[jour].weather);
+    
+    document.getElementById("option").classList.add("is-hidden");
+    document.getElementById("latitude").classList.add("is-hidden");
+    document.getElementById("longitude").classList.add("is-hidden");
+    document.getElementById("cumul").classList.add("is-hidden");
+    document.getElementById("wind").classList.add("is-hidden");
+    document.getElementById("dirwind").classList.add("is-hidden");
+    if ( ( ( latitude || longitude ) || ( cumul || (vent || direction ) ) ) ) {
+        //option ?
+        document.getElementById("option").classList.remove("is-hidden");
+
+        if (latitude) {
+            document.getElementById("latitude").classList.remove("is-hidden");
+            document.getElementById("latitude").textContent = `Latitude ${meteo[jour].latitude}`;
+        }
+        if (longitude) {
+            document.getElementById("longitude").classList.remove("is-hidden");
+            document.getElementById("longitude").textContent = `Longitude ${meteo[jour].longitude}`;
+        }
+        if (cumul) {
+            document.getElementById("cumul").classList.remove("is-hidden");
+            document.getElementById("cumul").textContent = `Cumul`;
+        }
+        if (vent) {
+            document.getElementById("wind").classList.remove("is-hidden");
+            document.getElementById("wind").textContent = `Vent moyen ${meteo[jour].wind10m}km/h`;
+        }
+        if (direction) {
+            document.getElementById("dirwind").classList.remove("is-hidden");
+            document.getElementById("dirwind").textContent = `Direction du vent ${meteo[jour].dirwind10m}°`;
+        }
+    }
+    
+    
 }
 
 /**
@@ -184,7 +218,14 @@ let lastPostal = "0"; //sécurité anti spam de requêtes
 let lastInsee = "0"; //sécurité anti spam de requêtes
 let meteo; //sauvegarde des informations de météo
 let notification;
+let latitude = false;
+let longitude = false;
+let cumul = false;
+let vent = false;
+let direction = false;
+let dayRequested = 1;
 
+//setting
 let settingOpen = false;
 document.getElementById("settingIcon").addEventListener("click", () => {
     if (settingOpen) {
@@ -194,4 +235,22 @@ document.getElementById("settingIcon").addEventListener("click", () => {
         document.getElementById("settingPage").classList.remove("is-hidden");
         settingOpen = true;
     }
-})
+});
+document.getElementById("applySetting").addEventListener("click", () => {
+    latitude = document.getElementById("latAvis").checked;
+    longitude = document.getElementById("longAvis").checked;
+    cumul = document.getElementById("cumulAvis").checked;
+    vent = document.getElementById("ventAvis").checked;
+    direction = document.getElementById("directionAvis").checked;
+    dayRequested = document.getElementById("jourSouhait").value;
+    console.log(latitude);
+    console.log(longitude);
+    console.log(cumul);
+    console.log(vent);
+    console.log(direction);
+    console.log(dayRequested);
+
+    //fermer setting
+    document.getElementById("settingPage").classList.add("is-hidden");
+    settingOpen = false;
+});

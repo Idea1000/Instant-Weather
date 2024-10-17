@@ -23,20 +23,20 @@
         <!-- Settings V2 -->
         <div class="setting columns is-mobile">
             <div class="box column p-5 is-hidden" id="settingPage">
-                <label class="checkbox is-size-4-desktop is-size-5-tablet is-size-6-mobile mb-1">
-                    afficher latitude <input type="checkbox">
+                <label class="checkbox is-size-4-desktop is-size-5-tablet is-size-6-mobile mb-1" for="latAvis">
+                    afficher latitude <input type="checkbox" id="latAvis">
                 </label>
                 <br>
-                <label class="checkbox is-size-4-desktop is-size-5-tablet is-size-6-mobile mb-1">
-                    afficher longitude <input type="checkbox">
+                <label class="checkbox is-size-4-desktop is-size-5-tablet is-size-6-mobile mb-1" for="longAvis">
+                    afficher longitude <input type="checkbox" id="longAvis">
                 </label>
                 <br>
-                <label class="checkbox is-size-4-desktop is-size-5-tablet is-size-6-mobile mb-1">
-                    afficher cumul de pluie <input type="checkbox">
+                <label class="checkbox is-size-4-desktop is-size-5-tablet is-size-6-mobile mb-1" for="cumulAvis">
+                    afficher cumul de pluie <input type="checkbox" id="cumulAvis">
                 </label>
                 <br>
-                <label class="checkbox is-size-4-desktop is-size-5-tablet is-size-6-mobile mb-1">
-                    afficher vent moyen <input type="checkbox">
+                <label class="checkbox is-size-4-desktop is-size-5-tablet is-size-6-mobile mb-1" for="ventAvis">
+                    afficher vent moyen <input type="checkbox" id="ventAvis">
                 </label>
                 <br>
                 <label class="checkbox is-size-4-desktop is-size-5-tablet is-size-6-mobile mb-2" for="directionAvis">
@@ -49,7 +49,7 @@
                 </label>
                 <br>
 
-                <button class="button is-link">Valider</button>
+                <button class="button is-link" id="applySetting">Valider</button>
             </div>
             <div class="icon is-size-2-desktop is-size-3-tablet is-size-4-mobile column" id="settingIcon">
                 <i class="fas fa-gear"></i>
@@ -64,11 +64,23 @@
                         <li class="is-active"><a href="#">Aujourd'hui</a></li>
                     </ul>
                 </div>
-                <p id="Emoji" class="is-size-3-desktop is-size-4-tablet is-size-5-mobile"></p>
-                <p id="Tmin" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
-                <p id="Tmax" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
-                <p id="Ppluie" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
-                <p id="Ejour" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
+                <div class="columns">
+                    <div class="column">
+                        <p id="Emoji" class="is-size-3-desktop is-size-4-tablet is-size-5-mobile"></p>
+                        <p id="Tmin" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
+                        <p id="Tmax" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
+                        <p id="Ppluie" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
+                        <p id="Ejour" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
+                    </div>
+                    <div class="column">
+                        <p id="option" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile is-hidden">- Options</p>
+                        <p id="latitude" class="is-size-5-desktop is-size-6-tablet is-size-7-mobile is-hidden"></p>
+                        <p id="longitude" class="is-size-5-desktop is-size-6-tablet is-size-7-mobile is-hidden"></p>
+                        <p id="cumul" class="is-size-5-desktop is-size-6-tablet is-size-7-mobile is-hidden"></p>
+                        <p id="wind" class="is-size-5-desktop is-size-6-tablet is-size-7-mobile is-hidden"></p>
+                        <p id="dirwind" class="is-size-5-desktop is-size-6-tablet is-size-7-mobile is-hidden"></p>
+                    </div>
+                </div>
             </div>
 
             <!-- fenêtre principale -->
@@ -102,6 +114,8 @@
                 </form>
             </div>
         </main>
+
+        <br><br>
 
         <!-- décommenter pour l'optimisation css -->
         <!--
