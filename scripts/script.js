@@ -184,3 +184,14 @@ let lastPostal = "0"; //sécurité anti spam de requêtes
 let lastInsee = "0"; //sécurité anti spam de requêtes
 let meteo; //sauvegarde des informations de météo
 let notification;
+
+let settingOpen = false;
+document.getElementById("settingIcon").addEventListener("click", () => {
+    if (settingOpen) {
+        document.getElementById("settingPage").classList.add("is-hidden");
+        settingOpen = false;
+    } else {
+        document.getElementById("settingPage").classList.remove("is-hidden");
+        settingOpen = true;
+    }
+})
