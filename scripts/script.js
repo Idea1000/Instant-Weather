@@ -1,3 +1,54 @@
+//local storage setting
+if (localStorage.getItem('cyclone_weather_lat') == null) {
+    localStorage.setItem('cyclone_weather_lat',  JSON.stringify(false));
+}
+if (localStorage.getItem('cyclone_weather_lon') == null) {
+    localStorage.setItem('cyclone_weather_lon',  JSON.stringify(false));
+}
+if (localStorage.getItem('cyclone_weather_cumul') == null) {
+    localStorage.setItem('cyclone_weather_cumul',  JSON.stringify(false));
+}
+if (localStorage.getItem('cyclone_weather_vent') == null) {
+    localStorage.setItem('cyclone_weather_vent',  JSON.stringify(false));
+}
+if (localStorage.getItem('cyclone_weather_dirvent') == null) {
+    localStorage.setItem('cyclone_weather_dirvent',  JSON.stringify(false));
+}
+if (localStorage.getItem('cyclone_weather_day') == null) {
+    localStorage.setItem('cyclone_weather_day',  1);
+}
+
+let latitude = JSON.parse(localStorage.getItem('cyclone_weather_lat'));
+let longitude = JSON.parse(localStorage.getItem('cyclone_weather_lon'));
+let cumul = JSON.parse(localStorage.getItem('cyclone_weather_cumul'));
+let vent = JSON.parse(localStorage.getItem('cyclone_weather_vent'));
+let direction = JSON.parse(localStorage.getItem('cyclone_weather_dirvent'));
+let dayRequested = JSON.parse(localStorage.getItem('cyclone_weather_day'));
+
+document.getElementById("latAvis").checked = latitude;
+document.getElementById("longAvis").checked = longitude;
+document.getElementById("cumulAvis").checked = cumul;
+document.getElementById("ventAvis").checked = vent;
+document.getElementById("directionAvis").checked = direction;
+document.getElementById("jourSouhait").value = dayRequested;
+
+//fin local storage setting
+
+function updateSetting() {
+    localStorage.setItem('cyclone_weather_lat',  JSON.stringify(document.getElementById("latAvis").checked));
+    localStorage.setItem('cyclone_weather_lon',  JSON.stringify(document.getElementById("longAvis").checked));
+    localStorage.setItem('cyclone_weather_cumul',  JSON.stringify(document.getElementById("cumulAvis").checked));
+    localStorage.setItem('cyclone_weather_vent',  JSON.stringify(document.getElementById("ventAvis").checked));
+    localStorage.setItem('cyclone_weather_dirvent',  JSON.stringify(document.getElementById("directionAvis").checked));
+    localStorage.setItem('cyclone_weather_day',  document.getElementById("jourSouhait").value);
+    latitude = localStorage.getItem('cyclone_weather_lat');
+    longitude = localStorage.getItem('cyclone_weather_lon');
+    cumul = localStorage.getItem('cyclone_weather_cumul');
+    vent = localStorage.getItem('cyclone_weather_vent');
+    direction = localStorage.getItem('cyclone_weather_dirvent');
+    dayRequested = localStorage.getItem('cyclone_weather_day');
+}
+
 /**
  * retire toutes les options d'un select
  * @param {document.select} selectElement 
@@ -130,11 +181,45 @@ function getMeteo(insee) {
  * @param {int} jour le nombre de jour depuis aujourd'hui
  */
 function updateMeteo(jour) {
+    updateIcon(meteo[jour].weather);
     document.getElementById("Tmin").textContent = `Température minimale ${meteo[jour].tmin}°C`;
     document.getElementById("Tmax").textContent = `Température maximale ${meteo[jour].tmax}°C`;
     document.getElementById("Ppluie").textContent = `Probabilité de pluie ${meteo[jour].probarain}%`;
     document.getElementById("Ejour").textContent = `Ensoleillement du jour ${meteo[jour].sun_hours}h`;
-    updateIcon(meteo[jour].weather);
+
+    document.getElementById("option").classList.add("is-hidden");
+    document.getElementById("latitude").classList.add("is-hidden");
+    document.getElementById("longitude").classList.add("is-hidden");
+    document.getElementById("cumul").classList.add("is-hidden");
+    document.getElementById("wind").classList.add("is-hidden");
+    document.getElementById("dirwind").classList.add("is-hidden");
+    if ( ( ( latitude || longitude ) || ( cumul || (vent || direction ) ) ) ) {
+        //option ?
+        document.getElementById("option").classList.remove("is-hidden");
+
+        if (latitude) {
+            document.getElementById("latitude").classList.remove("is-hidden");
+            document.getElementById("latitude").textContent = `Latitude ${meteo[jour].latitude}`;
+        }
+        if (longitude) {
+            document.getElementById("longitude").classList.remove("is-hidden");
+            document.getElementById("longitude").textContent = `Longitude ${meteo[jour].longitude}`;
+        }
+        if (cumul) {
+            document.getElementById("cumul").classList.remove("is-hidden");
+            document.getElementById("cumul").textContent = `Cumul`;
+        }
+        if (vent) {
+            document.getElementById("wind").classList.remove("is-hidden");
+            document.getElementById("wind").textContent = `Vent moyen ${meteo[jour].wind10m}km/h`;
+        }
+        if (direction) {
+            document.getElementById("dirwind").classList.remove("is-hidden");
+            document.getElementById("dirwind").textContent = `Direction du vent ${meteo[jour].dirwind10m}°`;
+        }
+    }
+    
+    
 }
 
 /**
@@ -184,3 +269,22 @@ let lastPostal = "0"; //sécurité anti spam de requêtes
 let lastInsee = "0"; //sécurité anti spam de requêtes
 let meteo; //sauvegarde des informations de météo
 let notification;
+
+//setting
+let settingOpen = false;
+document.getElementById("settingIcon").addEventListener("click", () => {
+    if (settingOpen) {
+        document.getElementById("settingPage").classList.add("is-hidden");
+        settingOpen = false;
+    } else {
+        document.getElementById("settingPage").classList.remove("is-hidden");
+        settingOpen = true;
+    }
+});
+document.getElementById("applySetting").addEventListener("click", () => {
+    updateSetting();
+
+    //fermer setting
+    document.getElementById("settingPage").classList.add("is-hidden");
+    settingOpen = false;
+});

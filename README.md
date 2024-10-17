@@ -4,11 +4,22 @@
 
 ## Présentation de l'application
 
-Ce projet est une application web permettant de connaître les informations météo d'une ville à partir de son code postal. Vous devez rentrer un code postal valide puis séléctionner la ville de votre choix pour obtenir les informations.
+Ce projet est une application web permettant de connaître les informations météo d'une ville à partir de son code postal.
+Vous devez rentrer un code postal valide puis séléctionner la ville de votre choix pour obtenir les informations.
 
 ## API utilisées
 - API de découpage administratif par commune : https://geo.api.gouv.fr/decoupage-administratif/communes
 - API de météo de MétéoConcept : https://api.meteo-concept.com/
+
+### Features
+
+#### V2
+- Paramètres :white_check_mark:
+- Plusieurs jour de météo :x:
+
+#### Bonus
+- Mode jour/nuit :white_check_mark:
+- Sauvegarde des paramètres :white_check_mark:
 
 ### Auteurs
 - [Luc BLAISON](https://github.com/blaison160)
