@@ -11,20 +11,20 @@ Vous devez rentrer un code postal valide puis séléctionner la ville de votre c
 - API de découpage administratif par commune : https://geo.api.gouv.fr/decoupage-administratif/communes
 - API de météo de MétéoConcept : https://api.meteo-concept.com/
 
-### Features
+## Features
 
-#### V2
+### V2
 - Paramètres :white_check_mark:
 - Plusieurs jour de météo :x:
 
-#### Bonus
+### Bonus
 - Mode jour/nuit :white_check_mark:
 - Sauvegarde des paramètres :white_check_mark:
 
-### Auteurs
+## Auteurs
 - [Luc BLAISON](https://github.com/blaison160)
 - [Mathéo BRAULT](https://github.com/Idea1000)
 - [Baptiste AUBIGNAT](https://github.com/baptiste-aubignat)
 
-### Remerciements
+## Remerciements
 - [Christophe VALLOT](https://github.com/princecorg)
