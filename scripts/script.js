@@ -48,7 +48,9 @@ function updateSetting() {
     localStorage.setItem('cyclone_weather_cumul',  JSON.stringify(document.getElementById("cumulAvis").checked));
     localStorage.setItem('cyclone_weather_vent',  JSON.stringify(document.getElementById("ventAvis").checked));
     localStorage.setItem('cyclone_weather_dirvent',  JSON.stringify(document.getElementById("directionAvis").checked));
-    localStorage.setItem('cyclone_weather_day',  document.getElementById("jourSouhait").value);
+    if (document.getElementById("jourSouhait").value > 0 && document.getElementById("jourSouhait").value < 8) {
+        localStorage.setItem('cyclone_weather_day',  document.getElementById("jourSouhait").value);
+    }
 
     latitude = JSON.parse(localStorage.getItem('cyclone_weather_lat'));
     longitude = JSON.parse(localStorage.getItem('cyclone_weather_lon'));
