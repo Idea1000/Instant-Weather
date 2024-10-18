@@ -5,7 +5,7 @@
         <meta name="description" content="Obtenez votre météo en un clic !">
         <meta name="keywords" content="meteo, météo">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles/bulma.opti.css"> <!-- https://uncss-online.com/ -->
+        <link rel="stylesheet" href="styles/bulma.min.css"> <!-- https://uncss-online.com/ -->
         <link rel="stylesheet" href="styles/style.css">
         <link rel="icon" type="image/png" href="images/logo_cyclone.png">
         <title>Instant Weather</title>
@@ -20,6 +20,15 @@
                 </div>
             </section>
         </header>
+
+        <!-- Notification -->
+        <div class="fixed-top is-hidden" id="notification">
+            <div class="container is-max-tablet">
+                <div class="notification is-danger">
+                    <button class="delete"></button>
+                </div>
+            </div>
+        </div>
 
         <!-- Settings V2 -->
         <div class="setting columns is-mobile">
@@ -59,28 +68,32 @@
         <main>
 
             <!-- Affichage données météo -->
-            <div class="box m-6 is-hidden" id="result">
-                <div class="tabs">
-                    <ul>
-                        <li class="is-active"><a href="#">Aujourd'hui</a></li>
-                    </ul>
-                </div>
-                <div class="columns">
-                    <div class="column">
-                        <p id="Emoji" class="is-size-3-desktop is-size-4-tablet is-size-5-mobile"></p>
-                        <p id="Tmin" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
-                        <p id="Tmax" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
-                        <p id="Ppluie" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
-                        <p id="Ejour" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
-                    </div>
-                    <div class="column">
-                        <p id="option" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile is-hidden">- Options</p>
-                        <p id="latitude" class="is-size-5-desktop is-size-6-tablet is-size-7-mobile is-hidden"></p>
-                        <p id="longitude" class="is-size-5-desktop is-size-6-tablet is-size-7-mobile is-hidden"></p>
-                        <p id="cumul" class="is-size-5-desktop is-size-6-tablet is-size-7-mobile is-hidden"></p>
-                        <p id="wind" class="is-size-5-desktop is-size-6-tablet is-size-7-mobile is-hidden"></p>
-                        <p id="dirwind" class="is-size-5-desktop is-size-6-tablet is-size-7-mobile is-hidden"></p>
-                    </div>
+            <div class="fixed-grid has-3-cols-desktop has-2-cols-tablet has-1-cols-mobile  ml-6 mr-6">
+                <div class="grid" id="resultC">
+                    <template id="origine">
+                        <div class="card cell">
+                            <div class="card-content">
+                                <div class="columns">
+                                    <div class="column">
+                                        <p id="Emoji" class="has-text-centered  is-size-3-tablet is-size-3-mobile"></p>
+                                        <p id="Tmin" class="is-size-5-desktop is-size-6-tablet is-size-6-mobile"></p>
+                                        <p id="Tmax" class="is-size-5-desktop is-size-6-tablet is-size-6-mobile"></p>
+                                        <p id="Ppluie" class="is-size-5-desktop is-size-6-tablet is-size-6-mobile"></p>
+                                        <p id="Ejour" class="is-size-5-desktop is-size-6-tablet is-size-6-mobile"></p>
+                                    </div>
+                                    <div class="column">
+                                        <p id="option" class="is-size-4-desktop is-size-5-tablet is-size-5-mobile is-hidden">Options</p>
+                                        <p id="latitude" class="is-size-5-desktop is-size-6-tablet is-size-6-mobile is-hidden"></p>
+                                        <p id="longitude" class="is-size-5-desktop is-size-6-tablet is-size-6-mobile is-hidden"></p>
+                                        <p id="cumul" class="is-size-5-desktop is-size-6-tablet is-size-6-mobile is-hidden"></p>
+                                        <p id="wind" class="is-size-5-desktop is-size-6-tablet is-size-6-mobile is-hidden"></p>
+                                        <p id="dirwind" class="is-size-5-desktop is-size-6-tablet is-size-6-mobile is-hidden"></p>
+                                    </div>
+                                </div>
+                                <time class="is-size-6-desktop is-size-7-tablet is-size-7-mobile"></time>
+                            </div>
+                        </div>
+                    </template>
                 </div>
             </div>
 
@@ -117,18 +130,6 @@
         </main>
 
         <br><br>
-
-        <!-- décommenter pour l'optimisation css -->
-        <!--
-            <div class="fixed-top">
-                <div class="container is-max-tablet">
-                    <div class="notification is-danger">
-                        <button class="delete"></button>
-                        <strong>t</strong>
-                    </div>
-                </div>
-            </div>
-        -->
 
         <!-- footer -->
         <footer class="footer has-text-centered pt-5">
