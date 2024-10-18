@@ -28,7 +28,7 @@ footer {
 
 html, body {
     margin: 0;
-    height: 100%;
+    height: auto;
 }
 
 .setting {
@@ -57,9 +57,9 @@ html, body {
 @media (prefers-color-scheme: light) {
     body {
         background: linear-gradient(30deg, rgba(0, 191, 255, 1) 0%, rgba(255, 255, 255, 1) 100%) !important;
-        background-attachment: fixed;
+        background-attachment: scroll !important;
         background-repeat: no-repeat;
-        background-size: 100% 100%;
+        background-size: 100% 100% !important;
         min-height: 100vh;
     }
 
@@ -75,9 +75,9 @@ html, body {
 @media (prefers-color-scheme: dark) {
     body {
         background: linear-gradient(30deg, rgba(25, 25, 112, 1) 0%, rgba(20, 22, 26, 1) 90%) !important;
-        background-attachment: fixed;
+        background-attachment: scroll !important;
         background-repeat: no-repeat;
-        background-size: 100% 100%;
+        background-size: 100% 100% !important;
         min-height: 100vh;
     }
 }
