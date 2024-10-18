@@ -67,54 +67,32 @@
         <main>
 
             <!-- Affichage données météo -->
-            <div id="resultC">
-                <template id="origine">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="columns">
-                                <div class="column">
-                                    <p id="Emoji" class="is-size-3-desktop is-size-4-tablet is-size-5-mobile">test</p>
-                                    <p id="Tmin" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
-                                    <p id="Tmax" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
-                                    <p id="Ppluie" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
-                                    <p id="Ejour" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
+            <div class="fixed-grid has-3-cols-desktop has-2-cols-tablet has-1-cols-mobile  ml-6 mr-6">
+                <div class="grid" id="resultC">
+                    <template id="origine">
+                        <div class="card cell">
+                            <div class="card-content">
+                                <div class="columns">
+                                    <div class="column">
+                                        <p id="Emoji" class="has-text-centered  is-size-3-tablet is-size-3-mobile"></p>
+                                        <p id="Tmin" class="is-size-5-desktop is-size-6-tablet is-size-6-mobile"></p>
+                                        <p id="Tmax" class="is-size-5-desktop is-size-6-tablet is-size-6-mobile"></p>
+                                        <p id="Ppluie" class="is-size-5-desktop is-size-6-tablet is-size-6-mobile"></p>
+                                        <p id="Ejour" class="is-size-5-desktop is-size-6-tablet is-size-6-mobile"></p>
+                                    </div>
+                                    <div class="column">
+                                        <p id="option" class="is-size-4-desktop is-size-5-tablet is-size-5-mobile is-hidden">Options</p>
+                                        <p id="latitude" class="is-size-5-desktop is-size-6-tablet is-size-6-mobile is-hidden"></p>
+                                        <p id="longitude" class="is-size-5-desktop is-size-6-tablet is-size-6-mobile is-hidden"></p>
+                                        <p id="cumul" class="is-size-5-desktop is-size-6-tablet is-size-6-mobile is-hidden"></p>
+                                        <p id="wind" class="is-size-5-desktop is-size-6-tablet is-size-6-mobile is-hidden"></p>
+                                        <p id="dirwind" class="is-size-5-desktop is-size-6-tablet is-size-6-mobile is-hidden"></p>
+                                    </div>
                                 </div>
-                                <div class="column">
-                                    <p id="option" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile is-hidden">- Options</p>
-                                    <p id="latitude" class="is-size-5-desktop is-size-6-tablet is-size-7-mobile is-hidden"></p>
-                                    <p id="longitude" class="is-size-5-desktop is-size-6-tablet is-size-7-mobile is-hidden"></p>
-                                    <p id="cumul" class="is-size-5-desktop is-size-6-tablet is-size-7-mobile is-hidden"></p>
-                                    <p id="wind" class="is-size-5-desktop is-size-6-tablet is-size-7-mobile is-hidden"></p>
-                                    <p id="dirwind" class="is-size-5-desktop is-size-6-tablet is-size-7-mobile is-hidden"></p>
-                                </div>
+                                <time>18 octobre 2024</time>
                             </div>
-                            <time>18 octobre 2024</time>
                         </div>
-                    </div>
-                </template>
-            </div>
-            <div class="box m-6 is-hidden" id="result">
-                <div class="tabs">
-                    <ul>
-                        <li class="is-active"><a href="#">Aujourd'hui</a></li>
-                    </ul>
-                </div>
-                <div class="columns">
-                    <div class="column">
-                        <p id="Emoji" class="is-size-3-desktop is-size-4-tablet is-size-5-mobile"></p>
-                        <p id="Tmin" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
-                        <p id="Tmax" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
-                        <p id="Ppluie" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
-                        <p id="Ejour" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile"></p>
-                    </div>
-                    <div class="column">
-                        <p id="option" class="is-size-4-desktop is-size-5-tablet is-size-6-mobile is-hidden">- Options</p>
-                        <p id="latitude" class="is-size-5-desktop is-size-6-tablet is-size-7-mobile is-hidden"></p>
-                        <p id="longitude" class="is-size-5-desktop is-size-6-tablet is-size-7-mobile is-hidden"></p>
-                        <p id="cumul" class="is-size-5-desktop is-size-6-tablet is-size-7-mobile is-hidden"></p>
-                        <p id="wind" class="is-size-5-desktop is-size-6-tablet is-size-7-mobile is-hidden"></p>
-                        <p id="dirwind" class="is-size-5-desktop is-size-6-tablet is-size-7-mobile is-hidden"></p>
-                    </div>
+                    </template>
                 </div>
             </div>
 
