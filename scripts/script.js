@@ -155,10 +155,10 @@ function ajouteJours (days) {
 function updateMeteo(jour, container) {
     let card = container.children[0];
     updateIcon(meteo[jour].weather, card.children[0].querySelector("#Emoji"));
-    card.children[0].querySelector("#Tmin").textContent = `Température minimale ${meteo[jour].tmin}°C`;
-    card.children[0].querySelector("#Tmax").textContent = `Température maximale ${meteo[jour].tmax}°C`;
-    card.children[0].querySelector("#Ppluie").textContent = `Probabilité de pluie ${meteo[jour].probarain}%`;
-    card.children[0].querySelector("#Ejour").textContent = `Ensoleillement du jour ${meteo[jour].sun_hours}h`;
+    card.children[0].querySelector("#Tmin").textContent = `Température minimale : ${meteo[jour].tmin}°C`;
+    card.children[0].querySelector("#Tmax").textContent = `Température maximale : ${meteo[jour].tmax}°C`;
+    card.children[0].querySelector("#Ppluie").textContent = `Probabilité de pluie : ${meteo[jour].probarain}%`;
+    card.children[0].querySelector("#Ejour").textContent = `Ensoleillement du jour : ${meteo[jour].sun_hours}h`;
 
     card.children[1].querySelector("#option").classList.add("is-hidden");
     card.children[1].querySelector("#latitude").classList.add("is-hidden");
@@ -179,23 +179,23 @@ function updateMeteo(jour, container) {
 
         if (latitude) {
             card.children[1].querySelector("#latitude").classList.remove("is-hidden");
-            card.children[1].querySelector("#latitude").textContent = `Latitude ${meteo[jour].latitude}`;
+            card.children[1].querySelector("#latitude").textContent = `Latitude : ${meteo[jour].latitude}`;
         }
         if (longitude) {
             card.children[1].querySelector("#longitude").classList.remove("is-hidden");
-            card.children[1].querySelector("#longitude").textContent = `Longitude ${meteo[jour].longitude}`;
+            card.children[1].querySelector("#longitude").textContent = `Longitude : ${meteo[jour].longitude}`;
         }
         if (cumul) {
             card.children[1].querySelector("#cumul").classList.remove("is-hidden");
-            card.children[1].querySelector("#cumul").textContent = `Cumul`;
+            card.children[1].querySelector("#cumul").textContent = `Cumul : ${meteo[jour].rr10}mm`;
         }
         if (vent) {
             card.children[1].querySelector("#wind").classList.remove("is-hidden");
-            card.children[1].querySelector("#wind").textContent = `Vent moyen ${meteo[jour].wind10m}km/h`;
+            card.children[1].querySelector("#wind").textContent = `Vent moyen : ${meteo[jour].wind10m}km/h`;
         }
         if (direction) {
             card.children[1].querySelector("#dirwind").classList.remove("is-hidden");
-            card.children[1].querySelector("#dirwind").textContent = `Direction du vent ${meteo[jour].dirwind10m}°`;
+            card.children[1].querySelector("#dirwind").textContent = `Direction du vent : ${meteo[jour].dirwind10m}°`;
         }
     }
 }
