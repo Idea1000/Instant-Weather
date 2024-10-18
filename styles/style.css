@@ -33,7 +33,7 @@ html, body {
 }
 
 .setting {
-    position: fixed;
+    position: absolute;
     top: 7%;
     right: 5rem;
     white-space: nowrap;
