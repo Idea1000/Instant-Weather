@@ -2,18 +2,23 @@
 if (localStorage.getItem('cyclone_weather_lat') == null) {
     localStorage.setItem('cyclone_weather_lat',  JSON.stringify(false));
 }
+
 if (localStorage.getItem('cyclone_weather_lon') == null) {
     localStorage.setItem('cyclone_weather_lon',  JSON.stringify(false));
 }
+
 if (localStorage.getItem('cyclone_weather_cumul') == null) {
     localStorage.setItem('cyclone_weather_cumul',  JSON.stringify(false));
 }
+
 if (localStorage.getItem('cyclone_weather_vent') == null) {
     localStorage.setItem('cyclone_weather_vent',  JSON.stringify(false));
 }
+
 if (localStorage.getItem('cyclone_weather_dirvent') == null) {
     localStorage.setItem('cyclone_weather_dirvent',  JSON.stringify(false));
 }
+
 if (localStorage.getItem('cyclone_weather_day') == null) {
     localStorage.setItem('cyclone_weather_day',  1);
 }
@@ -44,6 +49,7 @@ function updateSetting() {
     localStorage.setItem('cyclone_weather_vent',  JSON.stringify(document.getElementById("ventAvis").checked));
     localStorage.setItem('cyclone_weather_dirvent',  JSON.stringify(document.getElementById("directionAvis").checked));
     localStorage.setItem('cyclone_weather_day',  document.getElementById("jourSouhait").value);
+
     latitude = JSON.parse(localStorage.getItem('cyclone_weather_lat'));
     longitude = JSON.parse(localStorage.getItem('cyclone_weather_lon'));
     cumul = JSON.parse(localStorage.getItem('cyclone_weather_cumul'));
@@ -240,27 +246,27 @@ function getMeteo(insee) {
  * modifie l'icône en fonction du paramètre weather
  * @param {int} weather paramètre weather de la météo
  */
-function updateIcon(weather, element){
-    if(weather <4){
-        element.innerHTML =`<em class="fa-sun fa-solid">`;
-    }else if(weather <6){
+function updateIcon(weather, element) {
+    if (weather < 4) {
+        element.innerHTML = `<em class="fa-sun fa-solid">`;
+    } else if (weather < 6) {
         element.innerHTML = `<em class="fa-cloud-sun fa-solid">`;
-    }else if(weather <10){
+    } else if (weather < 10) {
         element.innerHTML = `<em class="fa-cloud fa-solid">`;
-    }else if(weather <12 || weather == 16){
+    } else if (weather < 12 || weather == 16) {
         element.innerHTML = `<em class="fa-cloud-rain fa-solid">`;
-    }else if((weather >16 && weather <22) || (weather > 39 && weather <79)){
+    } else if ((weather > 16 && weather <22) || (weather > 39 && weather < 79)) {
         element.innerHTML = `<em class="fa-cloud-showers-heavy fa-solid">`;
-    }else if(weather >99 && weather <143){
+    } else if (weather > 99 && weather < 143) {
         element.innerHTML = `<em class="fa-cloud-bolt fa-solid">`;
-    }else if(weather <212){
+    } else if (weather < 212) {
         element.innerHTML = `<em class="fa-cloud-sun-rain fa-solid">`;
-    }else {
+    } else {
         element.innerHTML = `<em class="fa-snowflake fa-solid">`;
     }
 }
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("cp").value = "";
 });
 
@@ -272,6 +278,7 @@ document.getElementById("valider").addEventListener("click", () => {
 const JOUR = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
 const MOIS = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
 const APITOKEN = '7e4130a5c51e4c071da97d29828bea60cf0091b53ca00d105a0b79bd54bd803d';
+
 let lastPostal = "0"; //sécurité anti spam de requêtes
 let lastInsee = "0"; //sécurité anti spam de requêtes
 let meteo; //sauvegarde des informations de météo
