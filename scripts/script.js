@@ -182,10 +182,10 @@ function getMeteo(insee) {
  */
 function updateMeteo(jour) {
     updateIcon(meteo[jour].weather);
-    document.getElementById("Tmin").textContent = `Température minimale ${meteo[jour].tmin}°C`;
-    document.getElementById("Tmax").textContent = `Température maximale ${meteo[jour].tmax}°C`;
-    document.getElementById("Ppluie").textContent = `Probabilité de pluie ${meteo[jour].probarain}%`;
-    document.getElementById("Ejour").textContent = `Ensoleillement du jour ${meteo[jour].sun_hours}h`;
+    document.getElementById("Tmin").textContent = `Température minimale : ${meteo[jour].tmin}°C`;
+    document.getElementById("Tmax").textContent = `Température maximale : ${meteo[jour].tmax}°C`;
+    document.getElementById("Ppluie").textContent = `Probabilité de pluie : ${meteo[jour].probarain}%`;
+    document.getElementById("Ejour").textContent = `Ensoleillement du jour : ${meteo[jour].sun_hours}h`;
 
     document.getElementById("option").classList.add("is-hidden");
     document.getElementById("latitude").classList.add("is-hidden");
@@ -199,23 +199,23 @@ function updateMeteo(jour) {
 
         if (latitude) {
             document.getElementById("latitude").classList.remove("is-hidden");
-            document.getElementById("latitude").textContent = `Latitude ${meteo[jour].latitude}`;
+            document.getElementById("latitude").textContent = `Latitude : ${meteo[jour].latitude}`;
         }
         if (longitude) {
             document.getElementById("longitude").classList.remove("is-hidden");
-            document.getElementById("longitude").textContent = `Longitude ${meteo[jour].longitude}`;
+            document.getElementById("longitude").textContent = `Longitude : ${meteo[jour].longitude}`;
         }
         if (cumul) {
             document.getElementById("cumul").classList.remove("is-hidden");
-            document.getElementById("cumul").textContent = `Cumul`;
+            document.getElementById("cumul").textContent = `Cumul : `;
         }
         if (vent) {
             document.getElementById("wind").classList.remove("is-hidden");
-            document.getElementById("wind").textContent = `Vent moyen ${meteo[jour].wind10m}km/h`;
+            document.getElementById("wind").textContent = `Vent moyen : ${meteo[jour].wind10m}km/h`;
         }
         if (direction) {
             document.getElementById("dirwind").classList.remove("is-hidden");
-            document.getElementById("dirwind").textContent = `Direction du vent ${meteo[jour].dirwind10m}°`;
+            document.getElementById("dirwind").textContent = `Direction du vent : ${meteo[jour].dirwind10m}°`;
         }
     }
     
