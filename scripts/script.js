@@ -76,36 +76,16 @@ function update() {
  * @param {String} texte 
  */
 function createNotification(texte) {
-    if(notification != null) {
-        notification.parentNode.removeChild(notification);
-    }
+    notification.classList.remove("is-hidden");
+    let saveButton = document.createElement("div");
+    saveButton.classList.add("delete");
 
-    let top = document.createElement("div");
-    top.classList.add("fixed-top");
-
-    let container = document.createElement("div");
-    container.classList.add("container");
-    container.classList.add("is-max-tablet");
-
-    let notificationB = document.createElement("div");
-    notificationB.classList.add("notification");
-    notificationB.classList.add("is-danger");
-
-    let button = document.createElement("button");
-    button.classList.add("delete");
-    notificationB.innerHTML = texte;
-
-    notificationB.appendChild(button);
-    container.appendChild(notificationB);
-    top.appendChild(container)
-    document.body.appendChild(top);
-
-    notification = top;
-
-    button.addEventListener('click', () => {
-        notification.parentNode.removeChild(notification);
-        notification = null;
+    saveButton.addEventListener('click', () => {
+        notification.classList.add("is-hidden");
     });
+
+    notification.children[0].children[0].innerHTML = texte;
+    notification.children[0].children[0].appendChild(saveButton);
 }
 
 /**
@@ -248,16 +228,6 @@ function updateIcon(weather){
 
 document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("cp").value = "";
-
-    /* notification handler */
-    (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
-        const $notification = $delete.parentNode;
-
-        $delete.addEventListener('click', () => {
-            $notification.parentNode.removeChild($notification);
-            console.log("supprime");
-        });
-    });
 });
 
 document.getElementById("cp").addEventListener("keyup", update);
@@ -268,7 +238,7 @@ const APITOKEN = '7e4130a5c51e4c071da97d29828bea60cf0091b53ca00d105a0b79bd54bd80
 let lastPostal = "0"; //sécurité anti spam de requêtes
 let lastInsee = "0"; //sécurité anti spam de requêtes
 let meteo; //sauvegarde des informations de météo
-let notification;
+let notification = document.getElementById("notification");
 
 //setting
 let settingOpen = false;
