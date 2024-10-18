@@ -57,7 +57,7 @@ html, body {
 @media (prefers-color-scheme: light) {
     html {
         background: linear-gradient(30deg, rgba(0, 191, 255, 1) 0%, rgba(255, 255, 255, 1) 100%) !important;
-        background-attachment: fixed;
+        background-attachment: scroll;
         background-size: cover;
     }
 
@@ -73,7 +73,7 @@ html, body {
 @media (prefers-color-scheme: dark) {
     html {
         background: linear-gradient(30deg, rgba(25, 25, 112, 1) 0%, rgba(20, 22, 26, 1) 90%) !important;
-        background-attachment: fixed;
+        background-attachment: scroll;
         background-size: cover;
     }
 }
