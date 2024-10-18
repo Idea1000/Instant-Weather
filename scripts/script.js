@@ -34,6 +34,9 @@ document.getElementById("jourSouhait").value = dayRequested;
 
 //fin local storage setting
 
+/**
+ * met à jour les paramètres en rapport avec les paramètres choisi
+ */
 function updateSetting() {
     localStorage.setItem('cyclone_weather_lat',  JSON.stringify(document.getElementById("latAvis").checked));
     localStorage.setItem('cyclone_weather_lon',  JSON.stringify(document.getElementById("longAvis").checked));
@@ -129,10 +132,22 @@ function getCommunes(postal, select) {
 }
 
 /**
+ * retourne la date du jour + days
+ * @param {int} days 
+ * @returns 
+ */
+function ajouteJours (days) {
+    var date = new Date();
+    date.setDate(date.getDate() + days);
+    return date;
+}
+
+/**
  * change l'affichage de la météo selon le jour choisit
  * @param {int} jour le nombre de jour depuis aujourd'hui
  */
-function updateMeteo(jour, card) {
+function updateMeteo(jour, container) {
+    let card = container.children[0];
     updateIcon(meteo[jour].weather, card.children[0].querySelector("#Emoji"));
     card.children[0].querySelector("#Tmin").textContent = `Température minimale ${meteo[jour].tmin}°C`;
     card.children[0].querySelector("#Tmax").textContent = `Température maximale ${meteo[jour].tmax}°C`;
@@ -145,6 +160,12 @@ function updateMeteo(jour, card) {
     card.children[1].querySelector("#cumul").classList.add("is-hidden");
     card.children[1].querySelector("#wind").classList.add("is-hidden");
     card.children[1].querySelector("#dirwind").classList.add("is-hidden");
+
+    var today = ajouteJours(jour);
+    var j = String(today.getDate()).padStart(2, '0');
+    var a = today.getFullYear();
+    dateRetour = JOUR[today.getDay()] + " " + j + " " + MOIS[today.getMonth()] + " " + a;
+    container.children[1].innerText = dateRetour;
     
     if ( ( ( latitude || longitude ) || ( cumul || (vent || direction ) ) ) ) {
         //option ?
@@ -184,7 +205,7 @@ function meteoRequest() {
     // ajouter toutes les cartes
     for (i = 0; i < dayRequested; i++) {
         let carte = document.getElementById("origine").content.cloneNode(true);
-        updateMeteo(i, carte.children[0].children[0].children[0]);
+        updateMeteo(i, carte.children[0].children[0]);
         document.getElementById("resultC").appendChild(carte);
     }
 }
@@ -247,6 +268,9 @@ document.getElementById("cp").addEventListener("keyup", update);
 document.getElementById("valider").addEventListener("click", () => {
     getMeteo(document.getElementById("selectCommune").value);
 })
+
+const JOUR = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
+const MOIS = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
 const APITOKEN = '7e4130a5c51e4c071da97d29828bea60cf0091b53ca00d105a0b79bd54bd803d';
 let lastPostal = "0"; //sécurité anti spam de requêtes
 let lastInsee = "0"; //sécurité anti spam de requêtes
