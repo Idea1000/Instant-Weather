@@ -181,7 +181,7 @@ function updateMeteo(jour, container) {
         }
         if (cumul) {
             card.children[1].querySelector("#cumul").classList.remove("is-hidden");
-            card.children[1].querySelector("#cumul").textContent = `Cumul : `;
+            card.children[1].querySelector("#cumul").textContent = `Cumul : ${meteo[jour].rr10}mm`;
         }
         if (vent) {
             card.children[1].querySelector("#wind").classList.remove("is-hidden");
