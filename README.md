@@ -15,7 +15,7 @@ Vous devez rentrer un code postal valide puis séléctionner la ville de votre c
 
 ### V2
 - Paramètres :white_check_mark:
-- Plusieurs jour de météo :x:
+- Plusieurs jour de météo :white_check_mark:
 
 ### Bonus
 - Mode jour/nuit :white_check_mark:
